@@ -7,18 +7,23 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22.22
-      - run: npm ci
-      - run: npm run build
-      - uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist/
+    uses: ./.github/workflows/_build.yaml
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: build astro
+  #       uses: ./.github/actions/build-astro
+        
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     cache: npm
+      #     node-version: 22.22
+      # - run: npm ci
+      # - run: npm run build
+      # - uses: actions/upload-artifact@v4
+      #   with:
+      #     name: dist
+      #     path: dist/
 
   deploy:
     runs-on: ubuntu-latest
