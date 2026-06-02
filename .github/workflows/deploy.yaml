@@ -13,6 +13,8 @@ concurrency:
 jobs:
   build:
     uses: ./.github/workflows/_build.yaml
+    permissions:
+      contents: read
 
   deploy:
     environment: production
